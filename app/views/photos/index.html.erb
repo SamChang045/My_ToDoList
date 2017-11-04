@@ -1,0 +1,56 @@
+<table class="table table-striped table-condensed">
+
+  <tr>
+
+    <td><span style="font-weight:bold;">Status</span></td>
+    <td><span style="font-weight:bold;">Title</span></td>
+    <td><span style="font-weight:bold;">Date</span></td>
+    <td><span style="font-weight:bold;">Show</span></td>
+    <td><span style="font-weight:bold;">Edit</span></td>
+    <td><span style="font-weight:bold;">Destroy</span></td>
+
+  </tr>
+
+  <% @photos.each do |photo| %>
+    <tr>
+
+      <td><input type="checkbox" value="None" id="squaredTwo" name="check" check /></td>
+      
+      <td><%= photo.title %></td>
+
+      <td><%= photo.date %></td>
+
+      <td>
+        <button type="button" class="btn btn-primary">
+          <span class="glyphicon glyphicon-check" aria-hidden="true">
+          <%= link_to 'Show', photo_path(photo) , :style=>"color:white" %>
+          </span>
+        </button>
+      </td>
+
+      <td>
+        <button type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-edit" aria-hidden="true">
+          <%= link_to 'Edit', edit_photo_path(photo) , :style=>"color:black" %>
+          </span>
+        </button>
+      </td>
+
+      <td>
+        <button type="button" class="btn btn-danger">
+          <span class="glyphicon glyphicon-remove" aria-hidden="true">
+          <%= link_to 'Destroy', photo_path(photo), method: :delete, data:{ confirm: "Are you sure?" }, :style=>"color:white" %>
+          </span>
+        </button>
+      </td>
+
+    </tr>
+  <% end %>
+
+</table>
+
+<button type="button" class="btn btn-primary">
+  <span class="glyphicon glyphicon-plus" aria-hidden="true">
+  <%= link_to 'New List', new_photo_path , :style=>"color:white" %>
+  </span>
+</button>
